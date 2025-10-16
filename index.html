@@ -23,42 +23,42 @@
     <div id="gameUI">
         <h3>Whack-a-Mole VR</h3>
         <p>Score: <span id="score">0</span></p>
-        <p>Time: <span id="timer">30</span>s</p>
+        <p>Time: <span id="timer">45</span>s</p>
         <button onclick="startGame()">Start Game</button>
     </div>
 
     <a-scene embedded style="height: 100vh;">
         <!-- Environment -->
-        <a-sky color="#87CEEB"></a-sky>
-        <a-plane position="0 0 0" rotation="-90 0 0" width="20" height="20" color="#228B22"></a-plane>
+        <a-sky color="black"></a-sky>
+        <a-plane position="0 0 0" rotation="-90 0 0" width="15" height="20" color="white"></a-plane>
 
         <!-- Mole Holes -->
-        <a-cylinder position="-3 0.01 -3" radius="0.6" height="0.2" color="#654321"></a-cylinder>
-        <a-cylinder position="0 0.01 -3" radius="0.6" height="0.2" color="#654321"></a-cylinder>
-        <a-cylinder position="3 0.01 -3" radius="0.6" height="0.2" color="#654321"></a-cylinder>
-        <a-cylinder position="-3 0.01 0" radius="0.6" height="0.2" color="#654321"></a-cylinder>
-        <a-cylinder position="0 0.01 0" radius="0.6" height="0.2" color="#654321"></a-cylinder>
-        <a-cylinder position="3 0.01 0" radius="0.6" height="0.2" color="#654321"></a-cylinder>
-        <a-cylinder position="-3 0.01 3" radius="0.6" height="0.2" color="#654321"></a-cylinder>
-        <a-cylinder position="0 0.01 3" radius="0.6" height="0.2" color="#654321"></a-cylinder>
-        <a-cylinder position="3 0.01 3" radius="0.6" height="0.2" color="#654321"></a-cylinder>
+        <a-cylinder position="-3 0.01 -3" radius="0.5" height="0.2" color="gray"></a-cylinder>
+        <a-cylinder position="0 0.01 -3" radius="0.5" height="0.2" color="gray"></a-cylinder>
+        <a-cylinder position="3 0.01 -3" radius="0.5" height="0.2" color="gray"></a-cylinder>
+        <a-cylinder position="-3 0.01 0" radius="0.5" height="0.2" color="gray"></a-cylinder>
+        <a-cylinder position="0 0.01 0" radius="0.5" height="0.2" color="gray"></a-cylinder>
+        <a-cylinder position="3 0.01 0" radius="0.5" height="0.2" color="gray"></a-cylinder>
+        <a-cylinder position="-3 0.01 3" radius="0.5" height="0.2" color="gray"></a-cylinder>
+        <a-cylinder position="0 0.01 3" radius="0.5" height="0.2" color="gray"></a-cylinder>
+        <a-cylinder position="3 0.01 3" radius="0.5" height="0.2" color="gray"></a-cylinder>
 
         <!-- Moles (initially hidden underground) -->
-        <a-box id="mole1" position="-3 -1 -3" width="0.8" height="0.8" depth="0.8" color="brown" class="mole" visible="false"></a-box>
-        <a-sphere id="mole2" position="0 -1 -3" radius="0.4" color="darkred" class="mole" visible="false"></a-sphere>
-        <a-box id="mole3" position="3 -1 -3" width="0.8" height="0.8" depth="0.8" color="brown" class="mole" visible="false"></a-box>
-        <a-sphere id="mole4" position="-3 -1 0" radius="0.4" color="darkred" class="mole" visible="false"></a-sphere>
-        <a-box id="mole5" position="0 -1 0" width="0.8" height="0.8" depth="0.8" color="brown" class="mole" visible="false"></a-box>
-        <a-sphere id="mole6" position="3 -1 0" radius="0.4" color="darkred" class="mole" visible="false"></a-sphere>
-        <a-box id="mole7" position="-3 -1 3" width="0.8" height="0.8" depth="0.8" color="brown" class="mole" visible="false"></a-box>
-        <a-sphere id="mole8" position="0 -1 3" radius="0.4" color="darkred" class="mole" visible="false"></a-sphere>
-        <a-box id="mole9" position="3 -1 3" width="0.8" height="0.8" depth="0.8" color="brown" class="mole" visible="false"></a-box>
+        <a-sphere id="mole1" position="-3 -1 -3" radius="0.4" color="red" class="mole" visible="false"></a-sphere>
+        <a-sphere id="mole2" position="0 -1 -3" radius="0.4" color="red" class="mole" visible="false"></a-sphere>
+        <a-sphere id="mole3" position="3 -1 -3" radius="0.4" color="red" class="mole" visible="false"></a-sphere>
+        <a-sphere id="mole4" position="-3 -1 0" radius="0.4" color="red" class="mole" visible="false"></a-sphere>
+        <a-sphere id="mole5" position="0 -1 0" radius="0.4" color="red" class="mole" visible="false"></a-sphere>
+        <a-sphere id="mole6" position="3 -1 0" radius="0.4" color="red" class="mole" visible="false"></a-sphere>
+        <a-sphere id="mole7" position="-3 -1 3" radius="0.4" color="red" class="mole" visible="false"></a-sphere>
+        <a-sphere id="mole8" position="0 -1 3" radius="0.4" color="red" class="mole" visible="false"></a-sphere>
+        <a-sphere id="mole9" position="3 -1 3" radius="0.4" color="red" class="mole" visible="false"></a-sphere>
 
         <!-- Camera with cursor -->
         <a-entity id="cameraRig" position="0 1.6 6">
             <a-camera look-controls wasd-controls cursor="fuse: true; fuseTimeout: 1500">
                 <a-cursor 
-                    geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                    geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
                     material="color: white"
                     position="0 0 -1">
                 </a-cursor>
@@ -73,7 +73,7 @@
     <script>
         // Game variables
         let score = 0;
-        let timeLeft = 30;
+        let timeLeft = 45;
         let gameActive = false;
         let gameTimer;
         let moleTimer;
@@ -95,7 +95,7 @@
 
         function startGame() {
             score = 0;
-            timeLeft = 30;
+            timeLeft = 45;
             gameActive = true;
             
             updateUI();
@@ -170,10 +170,10 @@
                     const pos = randomMole.getAttribute('position');
                     randomMole.setAttribute('position', pos.x + ' -1 ' + pos.z);
                 }
-            }, 2000);
+            }, 1000);
             
             // Spawn next mole in 1-3 seconds
-            moleTimer = setTimeout(spawnMole, Math.random() * 2000 + 1000);
+            moleTimer = setTimeout(spawnMole, Math.random() * 1000 + 1000);
         }
 
         function updateUI() {
